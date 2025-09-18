@@ -30,14 +30,22 @@
 public class Solution {
     // example in leetcode book
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int x = nums[i];
-            if (map.containsKey(target - x)) {
-                return new int[]{map.get(target - x), i};
+        int sum = 0;
+        int index[] = new int[2];
+       for(int i=0 ; i<nums.length ; i++)
+       {
+        for(int j=i+1 ; j<nums.length ; j++)
+        {
+            sum = nums[i]+ nums[j];
+            if(sum == target)
+            {
+                index[0] = i;
+                index[1] = j;
+                 return index;
             }
-            map.put(x, i);
+           
         }
-        throw new IllegalArgumentException("No two sum solution");
+       }
+        return index;
     }
 }
